@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+function calcular_total() {
+	importe_total = 0
+	$(".importe_linea").each(
+		function(index, value) {
+			importe_total = importe_total + eval($(this).val());
+		}
+	);
+	$("#total").val(importe_total);
+}
+ 
+function nueva_linea() {
+	$("#lineas").append('<input type="text" class="" value="" placeholder="nombre del articulo" />');
+	$("#lineas").append('<input type="text" class="importe_linea" value="" placeholder="cantidad"/><br/>');
+}
+</script>
+ 
+</head>
+<body>
+ 
+<form method="POST" action="procesar.php">
+	<div id="lineas">        
+	<br>
+		<input type="text" name="camp" class="" value=""/ placeholder="nombre del articulo">
+
+		<input type="text" name="camp2" class="importe_linea" value="" placeholder="cantidad"/><br/>
+	</div>
+	<label for="total">Total: <input type="text" name="total" id="total" value="0"/><br/>
+	<input type="button" value="Nueva l&iacute;nea" onclick="nueva_linea()"/>
+	<input type="button" value="Calcular" onclick="calcular_total()"/>
+	<input type="submit" name="enviar">
+</form>
+ 
+</body>
